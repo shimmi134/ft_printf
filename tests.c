@@ -12,24 +12,33 @@
 
 #include <stdarg.h>	
 #include <stdio.h>
-int	vadd(int args, ...)
+#include <unistd.h>
+void	vadd(char *str, ...)
 {
-	va_list	sum;
-    int i = args;
-    int result = 0;
+	va_list	lorf;
+    int i;
+    char    c;
 
-	va_start (sum, args);
-    
-	while (i > 0)
-	{
-        result += va_arg(sum, int);
-        i--;
-	}
-    va_end(sum);
-    return (result);
+    i = 0;
+	va_start (lorf, str);
+    while (str[i])
+    {
+        if (str[i] == '%')
+        {
+            c = va_arg(lorf, int);
+            write(1, &c, 1);
+            i++;
+        }
+        else
+            write (1, &str[i], 1);
+        i++;
+    }
+    va_end(lorf);
 }
 
 int	main(void)
 {
-	printf("%u\n", -5);
+    char    c;
+    c = 'c';
+    vadd ("Hola que tal %c tio\n", c);    
 }

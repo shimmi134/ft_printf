@@ -10,33 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hd/libft.h"
-#include "hd/ftprintf.h"
+#include "./libft.h"
+#include "./ftprintf.h"
 #include <stdarg.h>
+
 void    print_num(int num, char type)
 {
     unsigned long   nb;
     if (type == 'u')
     {
         nb = (unsigned long)num;
-        ft_putnbr(nb);
+        ft_putnbr_long(nb);
     }
     else
     {
-        ft_putnbr(num);
+        ft_putnbr_base(num, type);
     }
 
 }
 
-void    print_dir(char  c)
+void    print_dir(char  *str)
 {
-    char    *dir;
+    char **dir;
 
-    dir = &c;
-    ft_putstr(dir);
+    dir = &str;
+    ft_putdir(dir);
 }
 
 void    print_str(char *str)
 {
     ft_putstr(str);
 }
+

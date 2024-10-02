@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hd/libft.h"
-#include "hd/ftprintf.h"
+#include "./libft.h"
+#include "./ftprintf.h"
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -21,6 +21,7 @@ int	ft_printf(char const *str, ...)
     int i;
     char    *aux_str;
     int aux_int;
+    char    aux_char;
 
     i = 0;
     va_start(args, str);
@@ -28,16 +29,10 @@ int	ft_printf(char const *str, ...)
     {
         if (str[i] == '%')
         {
-            if (str[i+1] == 'd' || str[i+1] == 'i' || str[i+1] == 'u' || str[i+1] == 'c')
+            if (str[i+1] == 'd' || str[i+1] == 'i' || str[i+1] == 'u' || str[i+1] == 'x' || str[i+1] == 'X')
             {
                 aux_int = va_arg(args, int);
                 print_num(aux_int, str[i+1]);
-                i++;
-            }
-            else if (str[i+1] == 'x' || str[i+1] == 'X' || str[i+1] == 's')
-            {
-                aux_int = va_arg(args, int);
-                print_num_hex(aux_int, str[i+1]);
                 i++;
             }
             else if(str[i+1] == 's')
@@ -48,10 +43,17 @@ int	ft_printf(char const *str, ...)
             }
             else if ((str[i+1]) == 'p')
             {
-                print_dir(str[i+1]);
+                aux_str = va_arg(args, char *);
+                print_dir(aux_str);
                 i++;
             }
-            else if ((str[i+1] == '%'))
+            else if (str[i+1] == 'c')
+            {
+                aux_char = va_ar(args, char);
+                print_char(aux_char);
+                i++;
+            }
+            else if (str[i+1] == '%')
             {
                 write(1, &"%", 1);
                 i++;
@@ -60,7 +62,6 @@ int	ft_printf(char const *str, ...)
         else
             write(1, &str[i], 1);
         i++;
-        return(i); // Delete afterwards
     }
     va_end(args);
     return (0);

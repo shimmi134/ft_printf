@@ -21,6 +21,6 @@
 void    print_num(int num, char type);
 void    print_num_hex(int num, char type);
 void    print_str(char *str);
-void    print_dir(char str);
+void    print_dir(char *str);
 
 #endif
