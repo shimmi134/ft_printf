@@ -10,12 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-INCLUDE = libft.h
+NAME = libftprintf.a
+INCLUDE = libft.h printft.h 
 LIB = ar rcs
-SRC = 
-
-SRC_BONUS = 
+SRC = ft_printf.c ft_printf_helper.c ft_printf_helper2.c 
 
 FLAGS = -Wall -Werror -Wextra
 

@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
-#include "./ftprintf.h"
-#include <stdarg.h>
+#include "libft.h"
+#include "printft.h"    
 #include <stdio.h>
 
 int	ft_printf(char const *str, ...)
@@ -49,8 +48,8 @@ int	ft_printf(char const *str, ...)
             }
             else if (str[i+1] == 'c')
             {
-                aux_char = va_ar(args, char);
-                print_char(aux_char);
+                aux_char = va_arg(args, int);
+                write(1, &aux_char, 1);
                 i++;
             }
             else if (str[i+1] == '%')
@@ -66,4 +65,3 @@ int	ft_printf(char const *str, ...)
     va_end(args);
     return (0);
 }
-

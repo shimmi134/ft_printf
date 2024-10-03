@@ -1,4 +1,5 @@
-#include <unistd.h>
+#include "libft.h"
+#include "printft.h"
 
 void ft_putstr(char *str)
 {
@@ -47,7 +48,7 @@ void    ft_putnbr_base(int   num, char c)
     }
 }
 
-void put_dir(void *ptr)
+void ft_put_dir(void *ptr)
 {
       char    *hex;
       unsigned long   dir;
@@ -76,6 +77,12 @@ void put_dir(void *ptr)
       write(1, &hexdir[i], 16-i);
 }
 
-void    put_num_long(long num);
+void    ft_putnbr_u(unsigned int num)
+{
+    char    u;
 
-void    put_char(char c);
+    if (num > 9)
+        ft_putnbr_u(num / 10);
+    u = '0' + num % 10;
+    write (1, &u, 1);
+}
