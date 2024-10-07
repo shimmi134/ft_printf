@@ -6,35 +6,53 @@
 /*   By: shimi-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:29:11 by shimi-be          #+#    #+#             */
-/*   Updated: 2024/09/30 18:32:20 by shimi-be         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:46:17 by shimi-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "printft.h"
 
-void    print_num(int num, char type)
+void    ft_print_num(int num, char type, int* count)
 {
-    unsigned long   nb;
     if (type == 'u')
-    {
-        nb = (unsigned int)num;
-        ft_putnbr_u(nb);
-    }
+        ft_putnbr_u((unsigned int)num, count);
+    else if (type == 'i' || type == 'd')
+        ft_putnbr(num, type, count);
     else
-        ft_putnbr_base(num, type);
+        ft_putnbr_hex((unsigned int) num, type, count);
 }
 
-void    print_dir(char  *str)
+void    ft_print_dir(void *ptr, int* count)
 {
-    char **dir;
-
-    dir = &str;
-    ft_put_dir(dir);
+    if (!ptr)
+    {
+        ft_print_str("(nil)",count);
+        return ;
+    }
+    ft_putdir(ptr, count);
 }
 
-void    print_str(char *str)
+void    ft_print_str(char *str, int* count)
 {
-    ft_putstr(str);
+    int i;
+
+    i = 0;
+    if (!str)
+    {
+        ft_print_str("(null)", count);
+        return ;
+    }
+    while (str[i])
+    {
+        ft_print_char(str[i], count);
+        i++;
+    }
+}
+
+void    ft_print_char(int chr, int* count)
+{
+    write(1, &chr, 1);
+    *count += 1;
 }
 

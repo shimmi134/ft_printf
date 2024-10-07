@@ -11,7 +11,8 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-INCLUDE = libft.h printft.h 
+INCLUDE = printft.h
+RM = rm -f
 LIB = ar rcs
 SRC = ft_printf.c ft_printf_helper.c ft_printf_helper2.c 
 
@@ -19,24 +20,19 @@ FLAGS = -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
-
 all : $(NAME)
 
 $(NAME): $(OBJ) $(INCLUDE)
 	$(LIB) $(NAME) $(OBJ)
 
-bonus : $(OBJ) $(OBJ_BONUS) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJ) $(OBJ_BONUS)
-
 %.o: %.c $(INCLUDE)  Makefile
 	cc $(FLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ) $(OBJ_BONUS)
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -13,14 +13,12 @@
 #include <stdarg.h>	
 #include <stdio.h>
 #include <unistd.h>
-#include "libft.h"
 #include "printft.h"
 
 int	main(void)
 {
-    int n = 5;
-    int *ptr = &n;
+    int num = 5;
 
-    ft_printf("Hola que tal %p tio\n", ptr);    
-    printf("Hola que tal %p tio\n", ptr);    
+    ft_printf("Mine s: %s, c: %p\n", NULL, NULL );
+    printf("OG s: %s, c: %p\n", NULL, NULL);    
 }
