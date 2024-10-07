@@ -6,7 +6,7 @@
 /*   By: shimi-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:29:11 by shimi-be          #+#    #+#             */
-/*   Updated: 2024/10/04 18:46:17 by shimi-be         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:32:20 by shimi-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 void    print_num(int num, char type)
 {
+    unsigned long   nb;
     if (type == 'u')
-        ft_putnbr_u((unsigned int)num);
+    {
+        nb = (unsigned int)num;
+        ft_putnbr_u(nb);
+    }
     else
-    ft_putnbr_base(num, type);
+        ft_putnbr_base(num, type);
 }
 
 void    print_dir(char  *str)
@@ -31,18 +35,6 @@ void    print_dir(char  *str)
 
 void    print_str(char *str)
 {
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        write (1, &str[i], 1);
-        i++;
-    }
-}
-
-void    putchar(int chr)
-{
-    write(1, &chr, 1);
+    ft_putstr(str);
 }
 

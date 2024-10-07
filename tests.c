@@ -13,32 +13,14 @@
 #include <stdarg.h>	
 #include <stdio.h>
 #include <unistd.h>
-void	vadd(char *str, ...)
-{
-	va_list	lorf;
-    int i;
-    char    c;
-
-    i = 0;
-	va_start (lorf, str);
-    while (str[i])
-    {
-        if (str[i] == '%')
-        {
-            c = va_arg(lorf, int);
-            write(1, &c, 1);
-            i++;
-        }
-        else
-            write (1, &str[i], 1);
-        i++;
-    }
-    va_end(lorf);
-}
+#include "libft.h"
+#include "printft.h"
 
 int	main(void)
 {
-    char    c;
-    c = 'c';
-    vadd ("Hola que tal %c tio\n", c);    
+    int n = 5;
+    int *ptr = &n;
+
+    ft_printf("Hola que tal %p tio\n", ptr);    
+    printf("Hola que tal %p tio\n", ptr);    
 }

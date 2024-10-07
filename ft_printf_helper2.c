@@ -1,6 +1,18 @@
 #include "libft.h"
 #include "printft.h"
 
+void ft_putstr(char *str)
+{
+    int i;
+    
+    i = 0;
+    while (str[i])
+    {
+        write (1, &str[i], 1);
+        i++;
+    }
+}
+
 void    ft_putnbr_base(int   num, char c)
 {
     char    w;
